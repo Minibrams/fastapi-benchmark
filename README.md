@@ -11,8 +11,7 @@ pip install -r requirements.txt
 # Serve the API through Gunicorn using 1 worker (edit serve.sh to change number of workers)
 sh serve.sh
 
-# In another terminal, run a stress test against the synchronous or asynchronous endpoint.
-# (open http://localhost:8089 after running to start the test)
+# In another terminal, run a stress test against a synchronous or asynchronous endpoint:
 
 # Load JSON file from disk and return
 sh stress_sync_json.sh
