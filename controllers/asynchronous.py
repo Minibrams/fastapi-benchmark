@@ -1,5 +1,6 @@
 import json
 import aiofiles
+import asyncio
 from fastapi import APIRouter
 from httpx import AsyncClient
 
@@ -10,6 +11,7 @@ client = AsyncClient(timeout=60)
 @router.get('/json')
 async def json_async():
     r = await client.get('https://jsonplaceholder.typicode.com/todos')
+    await asyncio.sleep(1)
     return r.json()
 
 

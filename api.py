@@ -10,25 +10,25 @@ import controllers.asynchronous
 from flask import Flask
 from httpx import Client
 
-# app = FastAPI()
+app = FastAPI()
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["*"],
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# app.include_router(controllers.synchronous.router)
-# app.include_router(controllers.asynchronous.router)
+app.include_router(controllers.synchronous.router)
+app.include_router(controllers.asynchronous.router)
 
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route("/sync/json/")
-def hello_world():
-    with Client() as http:
-        r = http.get('https://jsonplaceholder.typicode.com/todos')
-        return "Blah"
+# @app.route("/sync/json/")
+# def hello_world():
+#     with Client() as http:
+#         r = http.get('https://jsonplaceholder.typicode.com/todos')
+#         return "Blah"
 
