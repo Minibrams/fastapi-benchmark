@@ -1,10 +1,11 @@
+import os
 import asyncio
 import aiofiles
 
 
 def _create_large_file(file):
     print(f'Creating a large file @ {file}...')
-    contents = '\n'.join([f'this is line number {i}' for i in range(20000)])
+    contents = '\n'.join([f'this is line number {i}' for i in range(10000000)])
     with open(file, 'w') as fp:
         fp.write(contents)
     
@@ -34,7 +35,9 @@ async def main():
     other_task = asyncio.create_task(arbitrary_async_process())
 
     await read_task
-    await other_task
+
+    print(f'Removing {file}...')
+    os.remove(file)
 
 
 if __name__ == '__main__':
