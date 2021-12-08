@@ -7,8 +7,8 @@ router = APIRouter(prefix='/sync')
 
 @router.get('/json')
 def json_sync():
-    with open('data.json') as fp:
-        return json.loads(fp.read())
+    with Client() as http:
+        return http.get('https://jsonplaceholder.typicode.com/todos').json()
 
 
 @router.get('/http')

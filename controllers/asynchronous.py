@@ -5,10 +5,13 @@ from httpx import AsyncClient
 
 router = APIRouter(prefix='/async')
 
+client = AsyncClient(timeout=60)
+
 @router.get('/json')
 async def json_async():
-    async with aiofiles.open('data.json') as fp:
-        return json.loads(await fp.read())
+    r = await client.get('https://jsonplaceholder.typicode.com/todos')
+    return r.json()
+
 
 @router.get('/http')
 async def http_async():
