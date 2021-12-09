@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import controllers.synchronous
 import controllers.asynchronous
+from middleware import add_thread_logging_middleware
 
 
 app = FastAPI()
@@ -17,6 +18,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+add_thread_logging_middleware(app)
 
 app.include_router(controllers.synchronous.router)
 app.include_router(controllers.asynchronous.router)
