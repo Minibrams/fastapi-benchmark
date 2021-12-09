@@ -17,9 +17,8 @@ async def json_async():
 
 @router.get('/http')
 async def http_async():
-    
     async with AsyncClient() as http:
-        return(await http.get('http://165.227.149.214:8090?waitms=1000')).content
+        return (await http.get('http://165.227.149.214:8090?waitms=1000')).content
 
 
 @router.get('/http/sync')
