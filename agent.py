@@ -1,8 +1,7 @@
 import os
-from locust import HttpUser, task, constant
+from locust import HttpUser, task
 
 class ApiUser(HttpUser):
-    wait_time = constant(1)
 
     @task
     def health_check(self):
