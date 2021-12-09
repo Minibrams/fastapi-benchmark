@@ -1,7 +1,9 @@
 import json
-import requests
+import threading
 from fastapi import APIRouter
 from httpx import Client
+from loguru import logger
+
 
 router = APIRouter(prefix='/sync')
 
@@ -14,4 +16,4 @@ def json_sync():
 @router.get('/http')
 def http_sync():
     with Client() as http:
-        return http.get('https://jsonplaceholder.typicode.com/todos/1').json()
+        return http.get('http://165.227.149.214:8090?waitms=1000').content
